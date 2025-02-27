@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+		
+		
+		.titlebackground{
+			display: flex;
+			justify-content: space-between;
+			background-color: lightsteelblue;
+			padding: 50px;
+		}
+		.create{
+			font-size: 20px;
+			border-radius: 20px;
+			border-color: darkblue;
+			padding: 5px;
+			width: 150px;
+			transition: 2s;
+			cursor: pointer;
+		}
+		.create:hover{
+			font-size: 20px;
+			border-radius: 20px;
+			border-color: darkblue;
+			background-color: mediumslateblue;
+			padding: 5px;
+			width: 200px;
+		}
+		.heading{
+			font-size: 20PX;
+			font-family: sans-serif;
+			font-style: italic;
+		}
+		.popupback{
+			position: absolute;
+			border-color: rgba(255, 255, 255, 0.3);
+			z-index: 1;
+			display: none;
+		}
+		.popup{
+			background-color: cadetblue;
+			width: 50%;
+			height: 50%;
+			margin-top: 5%;
+			border-radius: 20px;
+			border-color: darkblue;
+			justify-self: center;
+			position: absolute;
+			left: 30%;
+			z-index: 2;
+			display: none;
+		}
+	
+		.text1,.text2,.paragraph{
+
+			border-radius: 20px;
+			border-color: darkblue;
+			padding: 15px;
+			margin-top:30px ;
+			text-align: center;
+			width: 300px;
+		}
+		.add,.cancel{
+			font-size: 20px;
+			border-radius: 20px;
+			border-color: darkblue;
+			padding: 5px;
+			margin-top: 10px;
+			width: 150px;
+			transition: 2s;
+			cursor: pointer;
+			margin-bottom:10px ;
+		}
+		.add:hover,.cancel:hover{
+			font-size: 20px;
+			border-radius: 20px;
+			border-color: darkblue;
+			background-color: mediumslateblue;
+			padding: 5px;
+			margin-top: 10px;
+			width: 150px;
+			margin-bottom:10px ;
+		}
+		.overlay{
+			background-color: rgba(0, 0, 0, 0.2);
+			padding: 25px;
+		}
+		.books{
+			width: 300px;
+			border-color: darkblue;
+			background-color: white;
+			box-shadow: 10px 10px 10px 2px;
+			padding: 20px;
+			margin:50px ;
+			border-radius: 50px ;
+			transition: 2s;
+			display: inline-block;
+			justify-content: center;
+		}
+		.books:hover{
+			width: 300px;
+			border-color: black;
+			background-color: rgba(110, 110, 223, 0.4);
+			box-shadow: 10px 10px 10px 2px;
+			padding: 10px;
+			margin-left:50px ;
+			border-radius: 100px 20px 100px 20px;
+			border-width: 5px;
+			justify-content: center;
+			color: white;
+		}
+		.books h1{
+			display: flex;
+			justify-content: center;
+			color: green;
+		}
+		.books h2{
+			display: flex;
+			justify-content: center;
+		}
+		.books p{
+			display: flex;
+			justify-content: center;
+		}
+		.books button{
+			display: flex;
+			justify-content: center;
+			margin-left: 35%;
+			font-size: 20px;
+			border-radius: 20px;
+			border-color: darkblue;
+			padding: 5px;
+			margin-top: 10px;
+			width: 100px;
+			transition: 2s;
+			cursor: pointer;
+		}
+		.books button:hover{
+			display: flex;
+			justify-content: center;
+		    font-size: 20px;
+			border-radius: 20px;
+			border-color: darkblue;
+			background-color: burlywood;
+			padding: 5px;
+			margin-top: 10px;
+			width: 100px;
+		}
+		
+	</style>
+
+</head>
+<body>
+
+	<div class="titlebackground">
+		<h1 class="heading">TODO LISTS</h1>
+		<button class="create" id="create">CREATE</button>
+	</div>
+	<div class="popupback" id="popupback"></div>
+	<div class="popup" align="center">
+		<input type="text" name="text" class="text1" id="text1" placeholder="BOOKNAME"></br>
+		<input type="text" name="text" class="text2" id="text2" placeholder="AUTHER"></br>
+		<textarea class="paragraph" id="paragraph" placeholder="DESCRIBE"></textarea></br>
+		<button class="add" id="add">ADD</button>
+		<button class="cancel" id="cancel">CANCEL</button>
+	</div>
+	<div class="overlay">
+		<div class="books" >
+			<h1>CHESS BOOK</h1>
+			<h2>BOBI FISHER</h2>
+			<p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+		    </p>
+		    <button onclick="delete1(event)" class="delete">DELETE</button>
+		</div>
+	</div>
+
+</body>
+	<script type="text/javascript">
+		//popup , create 
+		var popup1 = document.querySelector(".popup")
+		var popupback1 = document.querySelector(".popupback")
+	    var create1 = document.getElementById("create")
+	    create1.addEventListener("click",function(event){
+	    	event.preventDefault()
+	    	popup1.style.display="block"
+	    	popupback1.style.display="block"
+	    })
+	    
+	    //cancel
+	    var cancel1 = document.getElementById("cancel")
+            cancel1.addEventListener("click",function(event){
+	    	event.preventDefault()
+	    	popup1.style.display="none"
+	    	popupback1.style.display="none"
+	    })
+	    //add,container overlay,h1,h2,p input,container books
+        var overlay = document.querySelector(".overlay")
+	    
+	    var h1 = document.getElementById("text1")
+	    var h2 = document.getElementById("text2")
+	    var p1 = document.getElementById("paragraph")
+
+	    var add1 = document.getElementById("add")
+	    add1.addEventListener("click",function(event){
+	    	event.preventDefault()
+
+	    	var div = document.createElement("div")
+	    	div.setAttribute("class","books")
+	    	div.innerHTML=
+	    	`<h1>${h1.value}</h1>
+			<h2>${h2.value}</h2>
+			<p>${p1.value}</p>
+		    <button onclick="delete1(event)" class="delete">DELETE</button>`
+		    overlay.append(div)
+
+		    popup1.style.display="none"
+	    })
+
+	    function delete1(event){
+	    	event.target.parentElement.remove()
+	    }
+
+    </script>
+</html>
